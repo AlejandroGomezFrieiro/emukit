@@ -4,6 +4,7 @@
 
 import numpy as np
 import pytest
+pytest.importorskip("sklearn")
 from sklearn.gaussian_process import GaussianProcessRegressor
 
 from emukit.model_wrappers.sklearn_model_wrapper import SklearnGPRWrapper

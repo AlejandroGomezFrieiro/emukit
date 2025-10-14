@@ -5,9 +5,15 @@
 # SPDX-License-Identifier: Apache-2.0
 
 
-from typing import Optional, Tuple
 
-import GPy
+import importlib
+if importlib.util.find_spec("GPy") is None:  # pragma: no cover
+	raise ImportError(
+		"GPy is not installed. Install optional dependency with 'pip install emukit[gpy]' to use gpy_model_wrappers." 
+	)
+import GPy  # noqa: F401
+
+from typing import Optional, Tuple
 import numpy as np
 
 from ..bayesian_optimization.interfaces import IEntropySearchModel

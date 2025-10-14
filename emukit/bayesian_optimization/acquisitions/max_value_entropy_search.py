@@ -9,7 +9,7 @@ from typing import Callable, Union
 
 import numpy as np
 import scipy
-from scipy.integrate import simps
+from scipy.integrate import simpson
 from scipy.optimize import bisect
 from scipy.stats import norm
 
@@ -301,7 +301,7 @@ class MUMBO(MaxValueEntropySearch):
         # calculate point-wise entropy function contributions (carefuly where density is 0)
         entropy_function = -density * np.log(density, out=np.zeros_like(density), where=(density != 0))
         # perform integration over ranges
-        approximate_entropy = simps(entropy_function.T, z.T)
+        approximate_entropy = simpson(entropy_function.T, z.T)
         # build monte-carlo estimate over the gumbel samples
         approximate_entropy = np.mean(approximate_entropy, axis=0)
 

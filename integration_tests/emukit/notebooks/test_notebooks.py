@@ -13,8 +13,13 @@ excluded_notebooks = ['Emukit-tutorial-multi-fidelity-bayesian-optimization.ipyn
 
 import os
 
+import pytest
+pytest.importorskip("nbformat")
+pytest.importorskip("nbconvert")
 import nbformat
 import pytest
+pytest.importorskip("nbformat")
+pytest.importorskip("nbconvert")
 from nbconvert.preprocessors import ExecutePreprocessor
 
 notebook_directory = './notebooks/'

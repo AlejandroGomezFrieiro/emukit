@@ -127,7 +127,7 @@ class MockRandom:
 
     @classmethod
     def uniform(cls, low, high, size):
-        return np.linspace(low, high - 10e-8, np.product(size)).reshape(size)
+        return np.linspace(low, high - 10e-8, np.prod(size)).reshape(size)
 
     @classmethod
     def randint(cls, low, high, size):
