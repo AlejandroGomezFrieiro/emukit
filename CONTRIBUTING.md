@@ -97,6 +97,53 @@ pip install -r requirements/test_requirements.txt
 pip install -r requirements/integration_test_requirements.txt
 ```
 
+### Test markers & optional dependencies
+Emukit uses pytest markers to group tests that rely on optional dependencies. Current markers (defined in `setup.cfg` under `[tool:pytest]`):
+
+- gpy: tests requiring GPy optional dependency
+- pybnn: tests requiring pybnn optional dependency
+- sklearn: tests requiring scikit-learn optional dependency
+- notebooks: tests executing Jupyter notebooks (requires nbformat, nbconvert)
+
+Example of gating a test that needs GPy:
+```python
+import pytest
+
+pytest.importorskip("GPy")  # skip if GPy not installed
+pytestmark = pytest.mark.gpy  # file-level marker (can also set per test)
+
+def test_some_gpy_integration():
+    import GPy
+    # ... assertions using GPy ...
+```
+Function-level alternative:
+```python
+import pytest
+
+def test_feature_x():
+    GPy = pytest.importorskip("GPy")
+    # ... use GPy ...
+
+test_feature_x = pytest.mark.gpy(test_feature_x)
+```
+Guidelines:
+- Always protect optional imports with `pytest.importorskip("<module>")` to turn absence into a skip, not an error.
+- Apply the corresponding marker (`pytestmark = pytest.mark.<marker>` or function-level) so contributors can include/exclude groups via `-m`.
+- When introducing a new optional dependency group, add its marker entry in `setup.cfg` under `[tool:pytest]` and document it in this section.
+- Avoid installing heavy optional dependencies in default dev loops; install only when working on that area (e.g. `pip install .[gpy]`).
+- Notebook execution tests use the `notebooks` marker; exclude them during rapid iteration with `pytest -m 'not notebooks'`.
+- Keep slow or heavyweight examples under an appropriate marker instead of core unit tests.
+
+Filtering examples:
+Run only core tests (skip all optional groups):
+```
+pytest -m 'not (gpy or pybnn or sklearn or notebooks)'
+```
+Run just the sklearn tests:
+```
+pytest -m sklearn
+```
+
 ### Formatting
 Emukit uses black and isort to format code. There is also a build action that checks code is properly formatted. Thus it is recommended to run these commands locally before creating a pull request:
 ```

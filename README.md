@@ -30,8 +30,23 @@ pip install emukit
 
 For other install options, see our [documentation](https://emukit.readthedocs.io/en/latest/installation.html).
 
-### Dependencies / Prerequisites
-Emukit's primary dependencies are Numpy and GPy.
+### Dependencies / Optional Extras
+Core dependencies are the numerical Python stack (NumPy, SciPy, matplotlib, emcee). GPy is optional and required only for Gaussian process wrappers, multi-fidelity models, and quadrature features.
+
+Install extras via pip:
+```
+# Core install
+pip install emukit
+
+# Add GPy-based functionality
+pip install emukit[gpy]
+
+# Build documentation (includes GPy + Sphinx toolchain)
+pip install emukit[docs]
+
+# Everything (gpy + docs + test tooling)
+pip install emukit[full]
+```
 See [requirements](requirements/requirements.txt).
 
 ## Getting started

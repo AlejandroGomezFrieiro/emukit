@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to Emukit will be documented in this file.
 
+## [Unreleased]
+- Documented test marker taxonomy and optional dependency gating (Ticket 024).
+
 ## [0.4.11]
 - Various bugfixes, including installation on Windows
 - Updated copyright info
