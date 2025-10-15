@@ -8,6 +8,7 @@
 import numpy as np
 import pytest
 pytest.importorskip("sklearn")
+pytestmark = pytest.mark.sklearn
 
 from emukit.examples.models.random_forest import RandomForest
 

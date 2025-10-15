@@ -41,10 +41,11 @@ setup(
     # - tests: Test-only dependencies.
     # - full: Convenience meta extra that installs all optional groups.
     # The previous 'benchmarking' extra is superseded by 'examples'.
+    # NOTE: DoE dependencies (PyDOE, sobol_seq) are now core requirements.
     # NOTE: emcee might become optional; defer change until later.
     extras_require={
         "gpy": ["GPy>=1.13.0"],
-        "examples": ["matplotlib"],
+        "examples": [],  # matplotlib now core; placeholder extra retained for compatibility
         "docs": [
             "Sphinx>=1.7.5",
             "nbsphinx>=0.3.4",
@@ -60,9 +61,6 @@ setup(
             "pytest>=3.5.1",
             "pytest-cov>=2.5.1",
             "mock>=2.0.0",
-            # design dependencies used in tests
-            "PyDOE>=0.3.0",
-            "sobol_seq>=0.1.2",
         ],
         "full": [
             "GPy>=1.13.0",
@@ -79,8 +77,6 @@ setup(
             "pytest>=3.5.1",
             "pytest-cov>=2.5.1",
             "mock>=2.0.0",
-            "PyDOE>=0.3.0",
-            "sobol_seq>=0.1.2",
         ],
     },
     python_requires=">=3.9",

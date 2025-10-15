@@ -16,10 +16,8 @@ import os
 import pytest
 pytest.importorskip("nbformat")
 pytest.importorskip("nbconvert")
+pytestmark = pytest.mark.notebooks
 import nbformat
-import pytest
-pytest.importorskip("nbformat")
-pytest.importorskip("nbconvert")
 from nbconvert.preprocessors import ExecutePreprocessor
 
 notebook_directory = './notebooks/'

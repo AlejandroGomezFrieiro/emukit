@@ -134,9 +134,10 @@ class MockRandom:
         return cls.uniform(low, high, size).astype(int)
 
 
-@mock.patch("numpy.random", MockRandom())
 def test_sample_uniform(space_3d_mixed):
-    X = space_3d_mixed.sample_uniform(90)
+    # Patch only the needed random generation functions (module patch causes recursion under NumPy>=2)
+    with mock.patch("numpy.random.uniform", MockRandom.uniform), mock.patch("numpy.random.randint", MockRandom.randint):
+        X = space_3d_mixed.sample_uniform(90)
     assert_array_equal(np.histogram(X[:, 0], 9)[0], np.repeat(10, 9))
     assert_array_equal(np.bincount(X[:, 1].astype(int)), [0, 30, 30, 30])
     assert_array_equal(np.bincount(X[:, 2].astype(int)), [45, 45])
