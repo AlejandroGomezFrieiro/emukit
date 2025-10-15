@@ -11,6 +11,10 @@ This timeline tracks progress on optional dependency refactoring, test gating ef
 - Status: Completed.
 - Outcome: Moved PyDOE & sobol_seq to mandatory core requirements; removed from extras to simplify installation and avoid conditional failures.
 
+### Ticket 024 – Marker Documentation
+- Status: Completed.
+- Outcome: Added CONTRIBUTING section detailing markers (gpy, pybnn, sklearn, notebooks), Unreleased CHANGELOG entry, and validated skips in minimal environment (no errors, only skips for missing optional deps).
+
 ### Ticket 022 – Marker Expansion (sklearn & Notebooks)
 - Status: Completed.
 - Outcome: Added `sklearn` and `notebooks` markers to setup.cfg. Annotated sklearn integration tests with `pytestmark = pytest.mark.sklearn` while retaining existing `pytest.importorskip("sklearn")`. Added `pytestmark = pytest.mark.notebooks` to notebook execution test and de-duplicated redundant `importorskip` calls. Timeline & gating summary updated.
