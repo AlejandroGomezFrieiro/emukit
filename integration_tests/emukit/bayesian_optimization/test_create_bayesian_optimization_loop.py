@@ -6,6 +6,7 @@
 
 
 import pytest
+
 pytest.importorskip("sklearn")
 pytestmark = pytest.mark.sklearn
 

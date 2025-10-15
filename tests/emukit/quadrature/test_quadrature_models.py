@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from math import isclose
 
 import pytest
+
 pytest.importorskip("GPy", reason="GPy not installed; install emukit[gpy]")
 pytestmark = pytest.mark.gpy
 import GPy

@@ -6,6 +6,7 @@
 
 
 import pytest
+
 pytest.importorskip("GPy")
 pytestmark = pytest.mark.gpy
 

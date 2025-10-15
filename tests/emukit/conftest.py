@@ -18,6 +18,7 @@ import numpy as np
 import pytest
 
 from emukit.core import ContinuousParameter, OneHotEncoding, ParameterSpace
+
 if HAS_GPY:
     from emukit.model_wrappers import GPyModelWrapper
 

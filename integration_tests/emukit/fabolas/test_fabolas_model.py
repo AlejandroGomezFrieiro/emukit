@@ -7,6 +7,7 @@
 
 import numpy as np
 import pytest
+
 pytest.importorskip("GPy")
 pytestmark = pytest.mark.gpy
 

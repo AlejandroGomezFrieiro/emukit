@@ -2,18 +2,17 @@
 # SPDX-License-Identifier: Apache-2.0
 
 
-import pytest
 # GPy optional: this test does not require GPy and runs in core environment
 from unittest.mock import MagicMock
 
 import numpy as np
+import pytest
 
 from emukit.bayesian_optimization.acquisitions.expected_improvement import (
     ExpectedImprovement,
     MeanPluginExpectedImprovement,
 )
 from emukit.core.interfaces import IModel, IModelWithNoise
-
 
 
 class MockIModel(IModel):

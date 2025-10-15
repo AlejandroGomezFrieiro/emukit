@@ -8,11 +8,11 @@
 from itertools import cycle
 from typing import List
 
+import matplotlib.pyplot as plt
 import numpy as np
 
 from .benchmark_result import BenchmarkResult
 
-import matplotlib.pyplot as plt
 
 class BenchmarkPlot:
     """Creates plots comparing results from different loops.

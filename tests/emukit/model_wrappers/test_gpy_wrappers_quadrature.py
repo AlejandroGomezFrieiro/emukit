@@ -5,6 +5,7 @@
 """Basic tests for quadrature GPy wrappers."""
 
 import pytest
+
 pytest.importorskip("GPy", reason="GPy not installed; install emukit[gpy]")
 pytestmark = pytest.mark.gpy
 import GPy

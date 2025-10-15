@@ -4,6 +4,7 @@
 
 import numpy as np
 import pytest
+
 pytest.importorskip("sklearn")
 pytestmark = pytest.mark.sklearn
 from sklearn.gaussian_process import GaussianProcessRegressor
