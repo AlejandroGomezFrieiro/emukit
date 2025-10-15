@@ -45,9 +45,17 @@ setup(
     # NOTE: emcee might become optional; defer change until later.
     extras_require={
         "gpy": ["GPy>=1.13.0"],
-        "examples": [],  # matplotlib now core; placeholder extra retained for compatibility
+        "bnn": ["pybnn>=0.0.5", "torch"],  # Bayesian neural network (Bohamiann / Profet) examples
+        "sklearn": ["scikit-learn"],  # scikit-learn model wrapper and examples
+        "examples": [  # Convenience extra for running example scripts & notebooks
+            "GPy>=1.13.0",            # GP-based examples
+            "pybnn>=0.0.5",           # Bohamiann / Profet
+            "torch",                  # Profet & BNN architectures
+            "scikit-learn"            # sklearn model wrapper examples
+        ],
         "docs": [
             # Include GPy so API docs for GPy wrappers build with real objects
+            "ipykernel",
             "GPy>=1.13.0",
             "Sphinx>=1.7.5",
             "nbsphinx>=0.3.4",
@@ -56,6 +64,8 @@ setup(
         ],
         "tests": [
             "coverage>=4.5.1",
+            "pandas",
+            "ipykernel",
             "codecov>=2.0.15",
             "flake8>=3.5.0",
             "isort>=5.10",
@@ -66,6 +76,11 @@ setup(
         ],
         "full": [
             "GPy>=1.13.0",
+            "pybnn>=0.0.5",
+            "torch",
+            "scikit-learn",
+            "pandas",
+            "ipykernel",
             "matplotlib",
             "Sphinx>=1.7.5",
             "nbsphinx>=0.3.4",

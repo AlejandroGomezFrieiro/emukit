@@ -31,7 +31,14 @@ pip install emukit
 For other install options, see our [documentation](https://emukit.readthedocs.io/en/latest/installation.html).
 
 ### Dependencies / Optional Extras
-Core dependencies are the numerical Python stack (NumPy, SciPy, matplotlib, emcee). GPy is optional and required only for Gaussian process wrappers, multi-fidelity models, and quadrature features.
+Core dependencies are the numerical Python stack (NumPy, SciPy, matplotlib, emcee). Optional groups enable additional features without pulling heavy dependencies into a minimal install:
+
+- `gpy`: Gaussian process wrappers, multi-fidelity models, Bayesian quadrature (adds `GPy`).
+- `bnn`: Bayesian neural network (Bohamiann) and Profet meta-surrogate examples (adds `pybnn`, `torch`).
+- `sklearn`: scikit-learn model wrapper and examples (adds `scikit-learn`).
+- `docs`: Build documentation locally (adds Sphinx toolchain + GPy to render GP API docs).
+- `tests`: Test tooling.
+- `full`: Convenience meta extra installing all of the above.
 
 Install extras via pip:
 ```
@@ -41,10 +48,19 @@ pip install emukit
 # Add GPy-based functionality
 pip install emukit[gpy]
 
+# Bohamiann & Profet examples (Bayesian neural nets)
+pip install emukit[bnn]
+
+# scikit-learn model wrapper support
+pip install emukit[sklearn]
+
 # Build documentation (includes GPy + Sphinx toolchain)
 pip install emukit[docs]
 
-# Everything (gpy + docs + test tooling)
+# Bundle for running most example scripts (GPy + pybnn + torch + scikit-learn)
+pip install emukit[examples]
+
+# Everything (gpy + bnn + sklearn + examples + docs + test tooling)
 pip install emukit[full]
 ```
 See [requirements](requirements/requirements.txt).

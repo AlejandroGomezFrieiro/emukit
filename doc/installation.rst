@@ -11,17 +11,31 @@ To install the core emukit package (without GPy), run
 
 Optional dependencies
 ________
-You can install optional dependency groups via setuptools extras:
+You can install optional dependency groups via setuptools extras. Each group enables additional functionality without inflating the core install:
+
+- ``gpy``: Gaussian process wrappers, multi-fidelity models, Bayesian quadrature (adds ``GPy``).
+- ``bnn``: Bayesian neural network (Bohamiann) and Profet meta-surrogate examples (adds ``pybnn``, ``torch``).
+- ``sklearn``: scikit-learn model wrapper and related examples (adds ``scikit-learn``).
+- ``docs``: Build documentation locally (Sphinx toolchain + GPy for rendering GP API docs).
+- ``tests``: Test tooling only.
+- ``examples``: Convenience bundle for most example scripts (installs ``GPy``, ``pybnn``, ``torch``, ``scikit-learn``).
+- ``full``: Convenience meta extra installing all of the above.
 
 .. code-block:: bash
 
-    # Add GPy support (Gaussian processes, multi-fidelity, quadrature wrappers)
+    # Gaussian processes / multi-fidelity / quadrature
     pip install emukit[gpy]
 
-    # Build documentation locally (includes GPy and Sphinx toolchain)
+    # Bayesian neural network & Profet examples
+    pip install emukit[bnn]
+
+    # scikit-learn model wrapper
+    pip install emukit[sklearn]
+
+    # Build documentation locally (includes gpy)
     pip install emukit[docs]
 
-    # Install everything (GPy + docs + test tooling)
+    # Everything (gpy + bnn + sklearn + docs + tests)
     pip install emukit[full]
 
 Installation from sources

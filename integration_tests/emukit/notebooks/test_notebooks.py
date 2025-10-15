@@ -17,6 +17,7 @@ import pytest
 pytest.importorskip("nbformat")
 pytest.importorskip("nbconvert")
 pytestmark = pytest.mark.notebooks
+pytest.importorskip("ipykernel")
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
 
@@ -42,5 +43,5 @@ def get_notebook_names():
 def test_notebook_runs_without_errors(name):
     with open(os.path.join(notebook_directory, name)) as f:
         nb = nbformat.read(f, as_version=4)
-    ep = ExecutePreprocessor(timeout=120)
+    ep = ExecutePreprocessor(timeout=120, kernel_name="python3")
     ep.preprocess(nb, {'metadata': {'path': notebook_directory}})

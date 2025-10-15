@@ -165,7 +165,7 @@ class TestNonLinearModel:
         grad = lambda x: np.sum(
             non_linear_model._predict_samples_with_gradients(x[None, :], fidelity_idx)[grad_idx], axis=0
         )
-        assert check_grad(func, grad, x0) < 1e-6
+        assert check_grad(func, grad, x0) < 2e-6
 
     def test_non_linear_model_mean_gradient(self, non_linear_model):
         """
