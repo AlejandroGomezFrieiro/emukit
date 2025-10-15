@@ -47,6 +47,8 @@ setup(
         "gpy": ["GPy>=1.13.0"],
         "examples": [],  # matplotlib now core; placeholder extra retained for compatibility
         "docs": [
+            # Include GPy so API docs for GPy wrappers build with real objects
+            "GPy>=1.13.0",
             "Sphinx>=1.7.5",
             "nbsphinx>=0.3.4",
             "sphinx-autodoc-typehints>=1.3.0",
