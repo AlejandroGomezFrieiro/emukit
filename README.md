@@ -63,7 +63,7 @@ pip install emukit[examples]
 # Everything (gpy + bnn + sklearn + examples + docs + test tooling)
 pip install emukit[full]
 ```
-See [requirements](requirements/requirements.txt).
+Legacy pinned requirement files remain in the `requirements/` directory for reference but extras (above) are the preferred installation mechanism going forward.
 
 ## Getting started
 For examples see our [tutorial notebooks](http://nbviewer.jupyter.org/github/emukit/emukit/blob/main/notebooks/index.ipynb).

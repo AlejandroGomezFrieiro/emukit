@@ -2,12 +2,13 @@
 All notable changes to Emukit will be documented in this file.
 
 ## [Unreleased]
-- Documented test marker taxonomy and optional dependency gating.
-- Introduced optional install extras: gpy, docs, examples (placeholder), tests, full.
-- Core installation no longer pulls GPy; GPy-dependent tests marked with @pytest.mark.gpy and skipped when GPy absent.
-- Updated documentation (README, installation.rst) to explain optional dependencies and extras.
-- ReadTheDocs build now uses the docs extra (includes GPy) so GPy wrapper API docs build correctly.
-- Added separate CI job running tests with GPy extra alongside core-only job to validate minimal installation.
+- Packaging: Adopt PEP 621 metadata in `pyproject.toml`; dynamic version from `emukit.__version__`.
+- Packaging: Introduced setuptools extras (`gpy`, `bnn`, `sklearn`, `docs`, `examples`, `tests`, `full`).
+- CI: Workflows now install extras via `pip install -e .[tests]` (and `[tests,gpy]`) instead of requirements files.
+- Docs: Updated installation guide, README, CONTRIBUTING to prefer extras over legacy `requirements/` files.
+- Tests: Documented pytest marker taxonomy and optional dependency gating.
+- Docs build: ReadTheDocs expected to use `docs` extra (includes GPy) for GP API sections.
+- Maintenance: Legacy requirements files retained temporarily for reference; deprecation planned.
 
 ## [0.4.11]
 - Various bugfixes, including installation on Windows

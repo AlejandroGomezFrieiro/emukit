@@ -78,7 +78,7 @@ Before submitting the pull request, please go through this checklist to make the
 ## Setting up a development environment
 
 ### Building the code
-See installing from source.
+See installing from source (now using `pip install -e .[tests]` for development).
 
 ### Running tests
 Run the full suite of unit tests or integration tests with these commands:
@@ -91,14 +91,22 @@ from the top level directory. To check unit test coverage, run this:
 pytest --verbose --cov emukit --cov-report term-missing tests
 ```
 
-Notice that unit tests and integration tests have their own set of additional dependencies. Those can be found in the `requirements` folder, and installed with:
+Notice that unit tests and integration tests have their own set of additional dependencies. You can install them via extras defined in `pyproject.toml`:
 ```
-pip install -r requirements/test_requirements.txt
-pip install -r requirements/integration_test_requirements.txt
+# Core + test tooling
+pip install -e .[tests]
+
+# Add optional dependency groups as needed (examples):
+pip install -e .[gpy]
+pip install -e .[bnn]
+pip install -e .[sklearn]
+# Or everything:
+pip install -e .[full]
 ```
+Legacy requirement files in `requirements/` remain temporarily for reference but will be phased out; prefer extras going forward.
 
 ### Test markers & optional dependencies
-Emukit uses pytest markers to group tests that rely on optional dependencies. Current markers (defined in `setup.cfg` under `[tool:pytest]`):
+Emukit uses pytest markers to group tests that rely on optional dependencies. Current markers (defined in `pyproject.toml` under `[tool.pytest.ini_options]`):
 
 - gpy: tests requiring GPy optional dependency
 - pybnn: tests requiring pybnn optional dependency
@@ -149,6 +157,7 @@ Emukit uses black and isort to format code. There is also a build action that ch
 ```
 isort .
 black .
+# Or run only on changed files via pre-commit if configured.
 ```
 
 ### Generating docs

@@ -24,21 +24,25 @@ You can install optional dependency groups via setuptools extras. Each group ena
 .. code-block:: bash
 
     # Gaussian processes / multi-fidelity / quadrature
-    pip install emukit[gpy]
+     pip install emukit[gpy]
+ 
+     # Bayesian neural network & Profet examples
+     pip install emukit[bnn]
+ 
+     # scikit-learn model wrapper
+     pip install emukit[sklearn]
+ 
+     # Build documentation locally (includes gpy)
+     pip install emukit[docs]
+ 
+     # Bundle of example dependencies
+     pip install emukit[examples]
+ 
+     # Everything (gpy + bnn + sklearn + examples + docs + tests)
+     pip install emukit[full]
+ 
+ Installation from sources
 
-    # Bayesian neural network & Profet examples
-    pip install emukit[bnn]
-
-    # scikit-learn model wrapper
-    pip install emukit[sklearn]
-
-    # Build documentation locally (includes gpy)
-    pip install emukit[docs]
-
-    # Everything (gpy + bnn + sklearn + docs + tests)
-    pip install emukit[full]
-
-Installation from sources
 
 .. code-block:: bash
 
@@ -48,7 +52,13 @@ If you would like a bit more control (e.g. for development), clone the repo, ins
 
 .. code-block:: bash
 
-    git clone https://github.com/emukit/emukit.git
-    cd Emukit
-    pip install -e .[gpy]  # or .[full] for all extras
-    python setup.py develop
+     git clone https://github.com/emukit/emukit.git
+     cd Emukit
+     # Editable install with desired extras (examples below)
+     pip install -e .[tests]          # core + test tooling
+     pip install -e .[gpy]            # add GPy-based functionality
+     # Or everything:
+     pip install -e .[full]
+
+`python setup.py develop` is no longer needed; PEP 621 metadata in `pyproject.toml` enables editable installs directly via pip (PEP 660).
+
